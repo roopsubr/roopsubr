@@ -1,0 +1,19 @@
+name: Build Windows Executable
+on: [push]
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with: {python-version: '3.9'}
+      - name: Install dependencies
+        run: pip install pyinstaller pandas openpyxl
+      - name: Build with PyInstaller
+        run: pyinstaller --onefile --windowed --name "Pre_post_checks_V3.4" ACI_PrePost-Tool.py
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: windows-exe
+          path: dist/Pre_post_checks_V3.4.exe
