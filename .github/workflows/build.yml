@@ -11,9 +11,9 @@ jobs:
       - name: Install dependencies
         run: pip install pyinstaller pandas openpyxl
       - name: Build with PyInstaller
-        run: pyinstaller --onefile --windowed --name "Pre_post_checks_V3.4" ACI_PrePost-Tool.py
+        run: pyinstaller --onefile --windowed --name "PrePostValidationTool" PrePostValidationTool.py
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: windows-exe
-          path: dist/Pre_post_checks_V3.4.exe
+          path: dist/PrePostValidationTool.exe
